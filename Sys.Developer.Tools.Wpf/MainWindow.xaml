@@ -1,0 +1,55 @@
+﻿<Window x:Class="Sys.Developer.Tools.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Main Window" Height="696" Width="775" FontFamily="Verdana">
+    <Grid Margin="0,0,2,-2">
+        <ListBox HorizontalAlignment="Left" Margin="12,101,0,232" Name="lstSqlServer" VerticalAlignment="Stretch" Width="245" SelectionChanged="lstSqlServer_SelectionChanged" />
+        <CheckBox Content="Local Databases Only" Height="16" HorizontalAlignment="Left" Margin="30,0,0,201" Name="chkLocalOnly" VerticalAlignment="Bottom" Width="151" Checked="chkLocalOnly_Checked" IsChecked="True" Click="chkLocalOnly_Click" />
+        <TabControl HorizontalAlignment="Stretch" Margin="597,37,39,382" Name="tabControl1" VerticalAlignment="Stretch" IsEnabled="False" Visibility="Hidden">
+            <TabItem Header="posrun.ini" Name="tabItem1">
+                <Grid>
+                    <TextBox Height="164" HorizontalAlignment="Left" Margin="23,15,0,0" Name="txtPosrun" VerticalAlignment="Top" Width="359" HorizontalContentAlignment="Left" />
+                    <Button Content="Update" Height="23" HorizontalAlignment="Right" Margin="0,0,85,88" Name="btnUpdate" VerticalAlignment="Bottom" Width="75" Click="btnUpdate_Click" RenderTransformOrigin="4.219,4.777" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Label Content="SQL Servers" Height="28" HorizontalAlignment="Left" Margin="12,36,0,0" Name="label1" VerticalAlignment="Top" />
+        <Button Content="Exit" Height="23" HorizontalAlignment="Right" Margin="0,0,39,13" Name="btnExit" VerticalAlignment="Bottom" Width="75" Click="btnExit_Click" />
+        <TextBox Height="28" HorizontalAlignment="Left" Margin="12,61,0,0" Name="txtServer" VerticalAlignment="Top" Width="151" />
+        <Button Content="Connect" Height="28" HorizontalAlignment="Right" Margin="0,61,508,0" Name="btnConnect" VerticalAlignment="Top" Width="71" Click="btnConnect_Click" />
+        <ListBox Height="124" HorizontalAlignment="Left" Margin="12,493,0,0" Name="lstLog" VerticalAlignment="Top" Width="729" />
+
+        <!-- FAMILY TREE -->
+        <TreeView Height="366" HorizontalAlignment="Left" Margin="290,101,0,0" Name="trvSqlDatabase" VerticalAlignment="Top" Width="451"
+                  SelectedItemChanged="trvSqlDatabase_SelectedItemChanged"  ItemsSource="{Binding FirstGeneration}" FontSize="14" AlternationCount="1" PreviewMouseRightButtonDown="trvSqlDatabase_PreviewMouseRightButtonDown">
+            <TreeView.ContextMenu>
+                <ContextMenu x:Name="DatabaseContext">
+                    <MenuItem Header="Insert Table..." Click="AddTableToList_Click" 
+                              Command="{Binding Path=PlacementTarget.ChangeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+                    <MenuItem Header="Remove Table" />
+                </ContextMenu>
+            </TreeView.ContextMenu>
+
+            <TreeView.ItemContainerStyle>
+                <!-- This Style binds a TreeViewItem to a PersonViewModel.  -->
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                    <Setter Property="FontWeight" Value="Normal" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TreeView.ItemContainerStyle>
+
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <TextBlock Text="{Binding Name}" />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+
+    </Grid>
+</Window>

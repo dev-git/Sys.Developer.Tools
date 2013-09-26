@@ -1,0 +1,17 @@
+﻿<Window x:Class="Sys.Developer.Tools.Wpf.TableData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TableData" Height="866" Width="1222" Topmost="True" FontFamily="Verdana" Activated="Window_Activated" Closing="Window_Closing">
+    <Grid Height="832" Width="1208">
+        <DataGrid ItemsSource="{Binding Path=records}" AutoGenerateColumns="False" Name="dgData" Margin="14,26,22,40" FontSize="12" 
+                  CurrentCellChanged="dgData_CurrentCellChanged" SelectionChanged="dgData_SelectionChanged" CellEditEnding="dgData_CellEditEnding" SelectionUnit="FullRow" />
+    </Grid>
+    <Window.Resources>
+        <DataTemplate x:Key="CustomTemplate">
+            <!--<Border Padding="0" Background="Gray">-->
+                <TextBox Text="{Binding Path=Value,NotifyOnTargetUpdated=True}" FontWeight="Normal" FontSize="14" Background="Black" Foreground="White" BorderThickness="0" />
+            <!--</Border>-->
+        </DataTemplate>
+
+    </Window.Resources>
+</Window>

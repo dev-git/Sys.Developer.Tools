@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCommonTableModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CommonTableModel>
+    <Database>AKPOS</Database>
+    <TableList>
+      <string>Config</string>
+      <string>S_This</string>
+      <string>S_Stations</string>
+      <string>Items</string>
+      <string>Customers</string>
+      <string>TransHeaders</string>
+      <string>TransLines</string>
+      <string>TransPayments</string>
+      <string>Orders</string>
+      <string>OrderLines</string>
+      <string>OrderDeliveries</string>
+      <string>OrderNotes</string>
+      <string>OrderPayments</string>
+    </TableList>
+  </CommonTableModel>
+</ArrayOfCommonTableModel>
