@@ -15,7 +15,8 @@ namespace Sys.Developer.Tools.Bdl
         //private const string TAB_LIST_FILE = @"D:\Data\Google Drive\Development\src\Sys.Developer.Tools\Sys.Developer.Tools.Bdl\CommonTableList.xml";
         // Todo: ...
         //private const string TAB_LIST_FILE = @"C:\Data\Google Drive\Development\src\Sys.Developer.Tools\Sys.Developer.Tools.Bdl\Sys.Developer.Tools.BdlCommonTableList.xml";
-        private static readonly string TAB_LIST_FILE = Path.Combine(Environment.SpecialFolder.CommonApplicationData.ToString(), "Sys.Developer.Tools.BdlCommonTableList.xml");
+        //private static readonly string TAB_LIST_FILE = Path.Combine(Environment.SpecialFolder.CommonApplicationData.ToString(), "Sys.Developer.Tools.BdlCommonTableList.xml");
+        private static readonly string TAB_LIST_FILE = Path.Combine(Environment.CurrentDirectory, "Sys.Developer.Tools.BdlCommonTableList.xml");
         private static readonly string PRELOAD_SERVER = Path.Combine(Environment.SpecialFolder.CommonApplicationData.ToString(), "Sys.Developer.Tools.BdlSqlServerInstanceList.xml");
 
 
